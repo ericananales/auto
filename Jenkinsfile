@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven' // This must match the name in "Manage Jenkins > Tools"
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
@@ -10,14 +14,12 @@ pipeline {
 
         stage('Build') {
             steps {
-                // If using Maven on Windows
-                bat 'mvn clean package'  // Use 'bat' instead of 'sh'
+                bat 'mvn clean package'  // Now uses the Jenkins-configured Maven
             }
         }
 
         stage('Test') {
             steps {
-                // If running tests on Windows
                 bat 'mvn test'
             }
         }
@@ -25,7 +27,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                // Add Windows deployment scripts here
             }
         }
     }
