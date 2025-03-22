@@ -5,3 +5,4 @@
 5️ Run & Automate → Push code changes, Jenkins auto-builds & tests. 
 
 pom.xml- defines build, test, and management settings. Without it, Maven can't run mvn clean package or mvn test, causing Jenkins build failures
+
